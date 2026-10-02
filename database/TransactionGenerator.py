@@ -1,4 +1,4 @@
-from seed import name,size
+from seed import name
 from random import randint
 
 
