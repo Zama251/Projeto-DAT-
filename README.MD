@@ -1,3 +1,8 @@
+*LER TODOS OS .MD ANTES DE COMEÇAR A TRABALHAR NO PROJETO*
+*ESSA DOCUMENTAÇÃO E IMPORTANTE ANTES DE COMEÇAR*
+*EXPLICAÇÃO ARQUITETURA.MD* - *README.MD* *É EXTREMAMENTE IMPORTANTE*
+
+
 Objetivo do trabalho e criar um sistema de Python + SQL + MachineLearning capaz de identificar trasnaçoes que fogem do comportamento normal e geral alertas;
 
 Tecnologias utilizadas: Python, SQL, Machine Learning, Pandas, Scikit-learn, Matplotlib, Github em equipe. 
