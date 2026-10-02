@@ -3,6 +3,22 @@
 *EXPLICAÇÃO ARQUITETURA.MD* - *README.MD* *É EXTREMAMENTE IMPORTANTE*
 
 
+git basico:
+
+git checkout -b "Nome da pessoa" / cria um branh nova chamada "Nome da pessoa" e muda para ela. e como criar um copia do trabalho separada da main para a versão ficar estavel e não atrapalhar. Dps usar os comandos abaixo para versionamento do projeto. O motivo de usar isso e evitar que as 5 pessoas do grupo façam alterações na main e atrapalhem o trabalho dos outros.
+*git checkout -b nome-da-branch | cria uma nova branch com o nome informado e muda para ela.*
+*git checkout nome-da-branch | muda para a branch informada.*
+
+
+git status | ele funciona como um "ls" do linux, mostrando o que foi alterado no projeto e o que ainda não foi commitado.
+git add . | adiciona todos os arquivos alterados para o commit. o . e para adicionar todos os arquivos, mas pode ser usado o nome do arquivo para adicionar apenas um arquivo. por exemplo: git add README.md
+git commit -m "mensagem" | cria um commit com a mensagem informada.
+git push | envia os commits para o repositório remoto.
+git pull | puxa as alterações do repositório remoto para o local. antes de fazer o pull, é importante fazer o commit das alterações locais para não perder nada e git status para ver se tem algo que não foi commitado.
+
+
+
+
 Objetivo do trabalho e criar um sistema de Python + SQL + MachineLearning capaz de identificar trasnaçoes que fogem do comportamento normal e geral alertas;
 
 Tecnologias utilizadas: Python, SQL, Machine Learning, Pandas, Scikit-learn, Matplotlib, Github em equipe. 
