@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Ambiente virtual
+.venv/
+venv/
+env/
+
+# Variáveis e senhas
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Modelos treinados
+*.pkl
+*.joblib
+
+# Dados temporários
+data/*.csv
+data/*.xlsx
+
+# Logs
+*.log
+
