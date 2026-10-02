@@ -3,234 +3,265 @@
 
 # *NÃO MEXER*
 
+# DIVISÃO DE FUNÇÕES
+
+Essa divisão serve para definir os principais responsáveis por cada parte do projeto.
+
+Responsável principal NÃO significa que somente aquela pessoa pode alterar o arquivo.
+Caso seja necessário alterar uma parte de outra pessoa, avisar antes para evitar conflito.
+
+--------------------------------------------------
+
 *`Andrey` — SQL + análise de dados*
 
-Responsável principalmente pela estrutura dos dados no banco e pela análise inicial dos dados.
+Responsável principalmente pela estrutura do banco e análise inicial dos dados.
 
 PRINCIPAL:
+
 ├── sql/
 │   ├── schema.sql
 │   └── dados_teste.sql
 │
-├── database/tabelas.py
-│
-└── services/analise_dados.py
+└── models/
+    ├── cliente.py
+    └── transacao.py
 
 FUNÇÕES:
-- Criar e organizar as tabelas SQL.
-- Definir estrutura de clientes, transações e alertas.
+
+- Criar a estrutura das tabelas SQL.
+- Criar tabelas de clientes.
+- Criar tabelas de transações.
+- Criar tabela de alertas.
+- Definir tipos de dados e relacionamentos.
 - Criar consultas SQL necessárias para análise.
-- Fazer análise estatística inicial dos dados.
-- Trabalhar com Pandas para entender distribuição, média, horários, valores etc.
-- Auxiliar na preparação dos dados que serão usados pelo Machine Learning.
+- Auxiliar na organização dos dados utilizados pelo Pandas.
+- Fazer análise inicial dos dados.
+- Analisar valores, horários, quantidade de transações e comportamento geral.
+- Auxiliar Ian e Murilo na escolha de dados relevantes para Machine Learning.
 
 APOIO:
-├── models/cliente.py
-├── models/transacao.py
-└── visualization/graficos.py
+
+├── database/
+└── ml/preprocessamento.py
 
 
 --------------------------------------------------
 
+*`Ian` — Machine Learning / IA + Python*
 
-*`Ian` — Machine Learning / IA + apoio Python*
-
-Responsável principal por toda a parte de Machine Learning e detecção de comportamento anômalo.
+Responsável principal pela parte de Machine Learning do projeto.
 
 PRINCIPAL:
+
 ├── ml/
 │   ├── preprocessamento.py
-│   ├── treinamento.py
-│   └── modelo.pkl
+│   └── treinamento.py
 │
-├── services/detector_anomalia.py
-│
-└── tests/test_anomalia.py
+└── tests/
+    └── test_anomalia.py
 
 FUNÇÕES:
-- Preparar os dados para Machine Learning.
-- Escolher quais características das transações serão utilizadas pelo modelo.
-- Fazer normalização/conversão dos dados quando necessário.
+
+- Preparar os dados utilizados pelo Machine Learning.
+- Escolher as características importantes das transações.
+- Transformar e organizar os dados.
+- Trabalhar com Pandas e Scikit-learn.
 - Criar e treinar o modelo de detecção de anomalias.
 - Trabalhar inicialmente com Isolation Forest.
-- Ajustar parâmetros do modelo.
 - Criar score de anomalia.
-- Fazer o modelo classificar transações normais/anômalas.
-- Testar resultados do modelo.
-- Avaliar falsos positivos e falsos negativos.
-- Melhorar o modelo conforme os testes.
-- Criar funções Python relacionadas ao funcionamento do ML.
-- Auxiliar outras partes do projeto quando precisarem consumir o resultado da IA.
+- Identificar transações normais e suspeitas.
+- Testar o modelo.
+- Avaliar resultados.
+- Reduzir falsos positivos.
+- Ajustar parâmetros do modelo.
+- Criar funções Python auxiliares relacionadas ao ML.
+- Trabalhar junto com Murilo na apresentação dos resultados.
+- Trabalhar junto com Joaquim na integração entre modelo e sistema.
 
 APOIO:
-├── services/analise_dados.py
-├── models/transacao.py
-├── main.py
-└── visualization/
 
-Ian fica como principal responsável técnico pelo Machine Learning.
+├── database/TransactionGenerator.py
+├── models/transacao.py
+├── ui/dashboard.py
+└── main.py
+
+Ian é o principal responsável técnico pelo núcleo de Machine Learning.
 
 
 --------------------------------------------------
 
+*`Joaquim` — alertas + segurança + lógica Python + integração*
 
-*`Joaquim` — alertas + segurança + lógica Python + integração geral*
-
-Responsável pela lógica principal do sistema depois que os dados saem do banco e/ou passam pelo modelo.
+Responsável principalmente pela lógica do sistema, geração de alertas, segurança e integração geral.
 
 PRINCIPAL:
-├── services/alerta_service.py
-│
-├── repositories/
-│   ├── cliente_repository.py
-│   ├── transacao_repository.py
-│   └── alerta_repository.py
-│
+
 ├── models/
+│   ├── alerta.py
 │   ├── cliente.py
-│   ├── transacao.py
-│   └── alerta.py
+│   └── transacao.py
 │
 ├── main.py
 │
-└── tests/test_database.py
+└── tests/
+    └── test_database.py
 
 FUNÇÕES:
-- Criar funções Python para cadastro de clientes.
-- Criar funções Python para cadastro de transações.
-- Buscar dados no MySQL.
-- Criar consultas utilizadas pelo sistema.
-- Receber o resultado produzido pelo modelo de Machine Learning.
-- Criar a lógica de geração de alertas.
-- Salvar os alertas no banco.
-- Trabalhar com validação dos dados.
+
+- Criar a lógica principal do sistema.
+- Integrar as diferentes partes do projeto.
+- Criar funções Python para busca de clientes.
+- Criar funções Python para busca de transações.
+- Criar funções para cadastro quando necessário.
+- Receber resultados do Machine Learning.
+- Criar a lógica para geração de alertas.
+- Trabalhar com validação de dados.
 - Fazer tratamento de erros.
-- Implementar cuidados gerais de segurança.
-- Evitar consultas inseguras ou entrada de dados sem validação.
-- Integrar banco, Machine Learning, alertas e painel.
-- Organizar o fluxo principal do programa.
-- Fazer testes de integração entre as partes do sistema.
+- Trabalhar com segurança geral do sistema.
+- Evitar entrada de dados inválidos.
+- Evitar consultas SQL inseguras.
+- Integrar banco, Machine Learning e dashboard.
+- Organizar o funcionamento do main.py.
+- Criar testes de integração.
+- Auxiliar Ian e Murilo quando houver necessidade de integração entre módulos.
 
 APOIO:
+
 ├── database/
-├── services/detector_anomalia.py
 ├── ml/
 ├── ui/
 └── tests/
 
-Também fica responsável pela integração final do sistema junto com Ian e Murilo.
+Joaquim fica como principal responsável pela integração final do sistema.
 
 
 --------------------------------------------------
 
-
 *`Zati` — integração SQL ↔ Python*
 
-Responsável pela camada básica de comunicação entre Python e MySQL.
+Responsável principalmente pela comunicação entre Python e MySQL.
 
 PRINCIPAL:
+
 ├── config/
 │   └── database.py
 │
 └── database/
-    ├── conexao.py
-    └── seed.py
+    ├── seed.py
+    ├── RegistrationSystem.py
+    └── TransactionGenerator.py
 
 FUNÇÕES:
-- Configurar conexão entre Python e MySQL.
-- Criar abertura e fechamento da conexão.
-- Trabalhar com credenciais através do .env.
-- Fazer tratamento básico de erros de conexão.
-- Criar o sistema inicial para popular o banco.
-- Gerar/inserir clientes fictícios.
-- Gerar/inserir transações fictícias.
-- Garantir que Python consiga enviar e receber dados do MySQL.
 
-APOIO:
-├── database/tabelas.py
-├── sql/
-└── repositories/
+- Criar a configuração da conexão com MySQL.
+- Utilizar variáveis do arquivo .env.
+- Criar conexão entre Python e banco.
+- Fazer tratamento básico de erros de conexão.
+- Trabalhar com inserção de dados no MySQL.
+- Trabalhar com leitura de dados do MySQL.
+- Auxiliar no gerador de cadastros.
+- Auxiliar no gerador de transações.
+- Garantir que os dados gerados consigam chegar corretamente ao banco.
+- Trabalhar junto com Andrey na compatibilidade entre Python e as tabelas SQL.
 
 OBS:
-Zati cuida principalmente da conexão e infraestrutura do banco.
-As funções de negócio como buscar cliente, cadastrar transação e gerar alerta ficam principalmente com Joaquim.
+
+RegistrationSystem.py e TransactionGenerator.py já possuem código inicial e devem ser utilizados como base.
+
+APOIO:
+
+├── sql/
+├── models/
+└── main.py
 
 
 --------------------------------------------------
 
+*`Murilo` — painel + visualização + apoio em Machine Learning*
 
-*`Murilo` — painel + visualização + Machine Learning*
-
-Responsável principal pela interface de visualização e trabalha junto com Ian na parte de Machine Learning.
+Responsável principalmente pela interface e visualização dos resultados do sistema.
 
 PRINCIPAL:
+
 ├── ui/
 │   └── dashboard.py
-│
-├── visualization/
-│   └── graficos.py
 │
 └── tests/
 
 FUNÇÕES:
-- Criar o painel/dashboard do sistema.
-- Mostrar transações cadastradas.
-- Mostrar transações classificadas como anômalas.
+
+- Criar o dashboard do sistema.
+- Mostrar clientes.
+- Mostrar transações.
+- Mostrar transações consideradas anômalas.
 - Mostrar alertas.
-- Criar filtros de visualização.
-- Criar gráficos e estatísticas.
+- Criar filtros.
+- Criar gráficos.
+- Mostrar estatísticas.
 - Mostrar resultados do modelo de Machine Learning.
-- Trabalhar junto com Ian nos testes do modelo.
-- Analisar resultados das detecções.
-- Auxiliar na avaliação da qualidade do modelo.
-- Trabalhar em melhorias do Machine Learning.
-- Testar integração entre ML e dashboard.
+- Trabalhar junto com Ian na análise das detecções.
+- Auxiliar nos testes do modelo.
+- Auxiliar na avaliação dos resultados.
+- Trabalhar com Matplotlib.
+- Trabalhar na integração entre ML e painel.
 
 APOIO:
-├── ml/
-├── services/detector_anomalia.py
-├── services/analise_dados.py
-├── repositories/
-└── models/transacao.py
 
-Murilo trabalha junto com Ian na parte de Machine Learning, mas Ian é o responsável principal pelo núcleo do modelo.
+├── ml/
+├── models/
+└── main.py
+
+Murilo trabalha junto com Ian na parte de Machine Learning, mas Ian é o responsável principal pelo modelo.
 
 
 --------------------------------------------------
 
-
-*RESPONSABILIDADES GERAIS*
+# RESPONSABILIDADES GERAIS
 
 Machine Learning:
-Ian (principal)
-Murilo (apoio)
+Ian - principal
+Murilo - apoio
 
-Integração final:
-Joaquim (principal)
-Ian + Murilo (apoio)
+Integração geral:
+Joaquim - principal
+Ian e Murilo - apoio
 
-Testes:
-Joaquim
-Ian
-Murilo
+SQL:
+Andrey - principal
 
-Banco / SQL:
-Andrey
-Zati
-Joaquim (consultas utilizadas pelo sistema)
+Integração Python / MySQL:
+Zati - principal
 
 Dashboard:
-Murilo (principal)
+Murilo - principal
 
-Análise de dados:
-Andrey (principal)
-Ian + Murilo (quando relacionado ao Machine Learning)
+Alertas:
+Joaquim - principal
 
 Segurança e validações:
-Joaquim (principal)
+Joaquim - principal
+
+Análise de dados:
+Andrey - principal
+Ian e Murilo - apoio
+
+Testes:
+Ian
+Joaquim
+Murilo
 
 Documentação:
-Todos devem documentar a própria parte.
+Todos devem documentar alterações importantes da própria parte.
 
 Pull Requests:
 Sempre que possível, quem não escreveu a alteração deve revisar antes do merge.
+
+--------------------------------------------------
+
+# OBSERVAÇÃO
+
+Não criar novas pastas ou arquivos principais sem necessidade.
+
+Caso seja necessário alterar a arquitetura do projeto, avisar o grupo antes.
+
+A divisão de funções serve para organização e não impede colaboração entre os integrantes.
