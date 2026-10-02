@@ -6,6 +6,9 @@
 git basico:
 
 git checkout -b "Nome da pessoa" / cria um branh nova chamada "Nome da pessoa" e muda para ela. e como criar um copia do trabalho separada da main para a versão ficar estavel e não atrapalhar. Dps usar os comandos abaixo para versionamento do projeto. O motivo de usar isso e evitar que as 5 pessoas do grupo façam alterações na main e atrapalhem o trabalho dos outros.
+
+Explicação simples seria (braço) ou melhor uma arvore o tronco e o main e os galhos as branches, cada pessoa tem seu galho e faz alterações nele, depois de terminar, faz um pull request para o tronco (main) e ai o tronco recebe as alterações de todos os galhos.
+
 *git checkout -b nome-da-branch | cria uma nova branch com o nome informado e muda para ela.*
 *git checkout nome-da-branch | muda para a branch informada.*
 
